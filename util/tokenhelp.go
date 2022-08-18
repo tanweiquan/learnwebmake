@@ -1,11 +1,19 @@
 package util
 
+import (
+	"time"
+
+	"github.com/dgrijalva/jwt-go"
+)
+
 // 载荷 定义自己的东西
 type Claims struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	jwt.StandardClaims
 }
+
+var jwtSecret = []byte("Helloworld")
 
 // 江定义的载荷加密生成token
 func GenerateToken(username, password string) (string, error) {
