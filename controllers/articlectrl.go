@@ -72,6 +72,8 @@ func (t *art) JsonArt(c *gin.Context) {
 	response["msg"] = msg
 	response["code"] = code
 	response["data"] = data
+	// 设置响应头包含：Access-Control-Allow-Origin"，官方解决解决跨域问题
+	c.Header("Access-Control-Allow-Origin", "*") // 这里的*是通配符，代表所有的静态页面都可以跨域请求服务端数据
 	c.JSON(http.StatusOK, response)
 }
 func (t *art) Edit(c *gin.Context) {
