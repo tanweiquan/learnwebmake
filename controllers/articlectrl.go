@@ -72,6 +72,7 @@ func (t *art) JsonArt(c *gin.Context) {
 	response["msg"] = msg
 	response["code"] = code
 	response["data"] = data
+	// 在使用ajax时，为了解决跨域，有两种方法：jsonp（前端提供后端JS函数，野路子）和CROS（设置响应头，官方）
 	// 设置响应头包含：Access-Control-Allow-Origin"，官方解决解决跨域问题
 	c.Header("Access-Control-Allow-Origin", "*") // 这里的*是通配符，代表所有的静态页面都可以跨域请求服务端数据
 	c.JSON(http.StatusOK, response)
