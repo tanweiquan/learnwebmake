@@ -13,6 +13,7 @@ btn.onclick = function(){
     // 0：xhr未初始化        1：open刚初始化 2：已经发送 
     // 3：服务端返回部分结果  4：服务端返回所有结果
     // change 改变
+    let articledata;
 xhr.onreadystatechange = function(){
     // 判断服务端是否返回所有结果
     if(xhr.readyState ===4){
@@ -25,13 +26,15 @@ xhr.onreadystatechange = function(){
             // console.log(xhr.statusText); // 响应状态字符串
             // console.log(xhr.getAllResponseHeaders()); // 所有响应头
             // console.log(xhr.response);//响应体
-
             // 设置result的文本
-            result.innerHTML= xhr.response;
+           let obj = JSON.parse(xhr.response);
+           articledata = obj.data.article[0].article;
 
         }else{
-
+            articledata ="发生错误"
+            
         }
     }
+    result.innerText= articledata;
 }
 }
