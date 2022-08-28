@@ -22,14 +22,20 @@
 
 
 
-    <!-- jsonp是野路子，先html用script标签引入后端的url,然后前端js代码要定义好一个函数处理数据，提供给后端，后端响应也要传入这个函数callback=? -->
-    <!-- 如：后端响应：函数名(前端要的数据) -->
+    <!-- jsonp是野路子，前端定义要一个包裹数据的函数 -->
+    <!-- 如：后端响应：函数名(前端要的数据) ，前端要使用自定义的函数处理拿到包裹的数据-->
     <!-- <script src="xxxx.js"></script> -->
     <!-- <script src="http://127.0.0.1:8080/api/article_content"></script> -->
     
-
+    <script>
+        function sayhaha(data){ // 函数名前端可以自定义
+            console.log(data);
+        }
+    </script>
+    <script src="https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=37156,36552,36625,36884,34812,37237,26350,22158,37227&wd=x&cb=sayhaha"></script>
 
     <!-- 官方解决方法，在服务端设置响应头："Access-Control-Allow-Origin" ,"*" -->
     <!-- gin框架中设置：c.Header("Access-Control-Allow-Origin", "*") -->
+    
 </body>
 </html>
