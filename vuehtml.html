@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        id：     #
+        class：  .
+    -->
+    <div class="app">
+        <!-- 表达式 -->
+        <h1>{{message}}</h1>
+        <!-- 属性 -->
+        <img :src="url" :alt="str">
+        <!-- 函数调用 -->
+        <button @click="SayOk">函数调用按钮</button>
+        <button @click="WhatIsIt">操作vue里的对象按钮</button>
+        <!-- 标签是否展示 -->
+        <h1 v-if="false">false时，即不展示也不渲染</h1>
+        <h1 v-show="false">false时，即不展示但会渲染</h1>
+        <!-- 列表展示 -->
+        <ul>
+            <li v-for="(i,v) in elems" :key="index">
+                <p>名称：{{v}},序号：{{i}}</p>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:".app",
+            data(){
+                return{
+                message:"hello world",
+                url:"xx.jpg",
+                str:"没有图片展示，哈哈",
+                elems:["元素1","元素2","元素3"]
+                }
+            },
+            methods:{
+                SayOk(){
+                    alert("OK")
+                },
+                WhatIsIt(){
+                    // 获取Vue里的示例，使用this.xxx
+                    this.message="操作对象成功"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
