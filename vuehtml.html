@@ -24,7 +24,7 @@
         <h1 v-show="false">false时，即不展示但会渲染</h1>
         <!-- 列表展示 -->
         <ul>
-            <li v-for="(i,v) in elems" :key="index">
+            <li v-for="(v,i) in elems" :key="i"> /*in 和of都行*/
                 <p>名称：{{v}},序号：{{i}}</p>
             </li>
         </ul>
